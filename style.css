@@ -1,0 +1,279 @@
+/*  */
+.help-block {
+  color: red !important;
+}
+/* ================= THEME VARIABLES ================= */
+:root {
+  /* Sidebar */
+  --sidebar-bg: #1f1f2e;
+  --sidebar-text: #ffffff;
+  --sidebar-hover: #2a2a3f;
+  --sidebar-active: #0d6efd;
+
+  /* Navbar */
+  --navbar-bg: #ffffff;
+  --navbar-text: #333333;
+
+  /* Content */
+  --content-bg: #f8f9fa;
+  --content-text: #333333;
+
+  /* Primary */
+  --primary-color: #0d6efd;
+
+  /* Footer */
+  --footer-bg: #ffffff;
+  --footer-text: #333333;
+
+  /* Transition Speed */
+  --transition-speed: 0.3s;
+}
+
+/* ================= GLOBAL STYLES ================= */
+body {
+  background-color: var(--content-bg);
+  color: var(--content-text);
+  font-family: "Arial", sans-serif;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+/* ================= SIDEBAR ================= */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 240px;
+  background-color: var(--sidebar-bg);
+  color: var(--sidebar-text);
+  overflow-y: auto;
+  transition: width var(--transition-speed);
+  z-index: 1030;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar.collapsed {
+  width: 60px;
+}
+
+.sidebar .sidebar-header {
+  padding: 1rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  white-space: nowrap;
+  overflow: hidden;
+  transition: opacity var(--transition-speed);
+}
+
+.sidebar.collapsed .sidebar-header {
+  opacity: 0;
+}
+
+/* Sidebar Nav */
+.sidebar ul.nav {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  position: relative;
+}
+
+.sidebar ul.nav li {
+  width: 100%;
+}
+
+.sidebar ul.nav li a {
+  display: flex;
+  align-items: center;
+  padding: 0.8rem 1rem;
+  color: var(--sidebar-text);
+  transition: all 0.2s;
+  position: relative;
+  z-index: 1;
+}
+
+.sidebar ul.nav li a:hover {
+  background-color: var(--sidebar-hover);
+}
+
+.sidebar ul.nav li a.active {
+  background-color: var(--sidebar-active);
+  color: #fff;
+}
+
+.sidebar ul.nav li a i {
+  margin-right: 1rem;
+  min-width: 24px;
+  text-align: center;
+  font-size: 1.1rem;
+  transition: margin var(--transition-speed);
+}
+
+.sidebar.collapsed ul.nav li a i {
+  margin-right: 0;
+}
+
+.sidebar ul.nav li a span {
+  transition: opacity var(--transition-speed);
+  white-space: nowrap;
+  padding-left: 4px;
+}
+
+.sidebar.collapsed ul.nav li a span {
+  opacity: 0;
+  width: 0;
+  overflow: hidden;
+}
+
+/* ================= TOGGLE ICON ANIMATION ================= */
+.sidebar-toggle {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  transition: all var(--transition-speed);
+}
+
+/* Default icon: Hamburger (bi-list) */
+.sidebar-toggle::before {
+  font-family: "bootstrap-icons";
+  content: "\f479"; /* bi-list */
+  transition: transform var(--transition-speed);
+}
+
+/* When active (sidebar open/expanded): show close icon */
+.sidebar-toggle.active::before {
+  content: "\f62a"; /* bi-x-lg */
+  transform: rotate(180deg);
+}
+
+/* ================= MAIN CONTENT ================= */
+.main-content {
+  margin-left: 240px;
+  padding: 1.5rem;
+  transition: margin-left var(--transition-speed);
+}
+
+.sidebar.collapsed ~ .main-content {
+  margin-left: 60px;
+}
+
+/* ================= NAVBAR ================= */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 56px;
+  background-color: var(--navbar-bg);
+  color: var(--navbar-text);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+  z-index: 1040;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.navbar .navbar-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.navbar .navbar-icons {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* ================= FOOTER ================= */
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 240px;
+  right: 0;
+  height: 40px;
+  background-color: var(--footer-bg);
+  color: var(--footer-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: left var(--transition-speed);
+  border-top: 1px solid #dee2e6;
+}
+
+.sidebar.collapsed ~ .footer {
+  left: 60px;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 992px) {
+  /* Sidebar default collapsed (always visible) */
+  .sidebar {
+    width: 60px;
+    left: 0;
+    z-index: 1050;
+    transition: width var(--transition-speed);
+  }
+
+  .navbar {
+    z-index: 1060;
+  }
+
+  /* When expanded, overlay full width on top of content */
+  .sidebar.expanded {
+    width: 240px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  }
+
+  /* Hide text in collapsed mode */
+  .sidebar ul.nav li a span {
+    opacity: 0;
+    width: 0;
+    overflow: hidden;
+    padding-left: 8px;
+  }
+
+  /* Show text when expanded */
+  .sidebar.expanded ul.nav li a span {
+    opacity: 1;
+    width: auto;
+    overflow: visible;
+    padding-left: 8px;
+  }
+
+  /* Keep content full width; sidebar overlays it instead */
+  .main-content {
+    margin-left: 60px;
+    transition: margin-left var(--transition-speed);
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Footer position stays fixed and unaffected */
+  .footer {
+    left: 60px;
+    transition: left var(--transition-speed);
+    z-index: 1;
+  }
+}
