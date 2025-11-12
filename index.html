@@ -1,105 +1,224 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>POS | Dashboard</title>
 
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
-    />
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-      crossorigin="anonymous"
-    ></script>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>POS | Dashboard</title>
 
-    <script
-      src="https://code.jquery.com/jquery-3.7.1.js"
-      integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
-      crossorigin="anonymous"
-    ></script>
-    <link rel="stylesheet" href="style.css" />
-    <script src="script.js"></script>
-  </head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+    crossorigin="anonymous"></script>
 
-  <body>
-    <!-- Sidebar -->
-    <div class="sidebar collapsed" id="sidebar">
-      <div class="sidebar-header">POS Dashboard</div>
-      <ul class="nav flex-column">
-        <li class="nav-item">
-          <a href="#" class="nav-link active">
-            <i class="bi bi-house"></i>
-            <span>Dashboard</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="#" class="nav-link">
-            <i class="bi bi-cart"></i>
-            <span> Orders</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="#" class="nav-link">
-            <i class="bi bi-box-seam"></i>
-            <span> Products</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="#" class="nav-link">
-            <i class="bi bi-gear"></i>
-            <span> Settings</span>
-          </a>
+  <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js"></script>
+</head>
+
+<body>
+  <!-- Sidebar -->
+  <div class="sidebar collapsed" id="sidebar">
+    <div class="sidebar-header">POS Dashboard</div>
+    <ul class="nav flex-column">
+      <li class="nav-item">
+        <a href="#" class="nav-link active">
+          <i class="bi bi-house"></i>
+          <span>Dashboard</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link">
+          <i class="bi bi-cart"></i>
+          <span> Orders</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link">
+          <i class="bi bi-box-seam"></i>
+          <span> Products</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link">
+          <i class="bi bi-gear"></i>
+          <span> Settings</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="navbar-header">
+      <span class="sidebar-toggle fs-4 fw-bolder" style="cursor: pointer" id="sidebarToggle"></span>
+      <span class="fw-bold">POS Dashboard</span>
+    </div>
+    <div class="dropdown">
+      <a href="#" class="d-flex align-items-center text-dark text-decoration-none dropdown-toggle" id="profileDropdown"
+        data-bs-toggle="dropdown" aria-expanded="false">
+        <span>Admin</span>
+      </a>
+      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
+        <li><a class="dropdown-item" href="#">Profile</a></li>
+        <li>
+          <a class="dropdown-item" href="#">Logout</a>
         </li>
       </ul>
     </div>
+    </div>
+  </nav>
 
-    <!-- Navbar -->
-    <nav class="navbar">
-      <div class="navbar-header">
-        <span
-          class="sidebar-toggle fs-4 fw-bolder"
-          style="cursor: pointer"
-          id="sidebarToggle"
-        ></span>
-        <span class="fw-bold">POS Dashboard</span>
+  <!-- Main Content -->
+  <div class="main-content container-fluid mt-5 vh-100">
+    <div class="row h-100">
+      <!-- Left Section (70%) -->
+      <div class="col-lg-8 col-md-7 col-sm-12 mb-4">
+
+        <!-- Category Section -->
+        <section class="category-container mb-4">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h5 class="fw-bold mb-0">Choose Category</h5>
+            <!-- <a href="#" class="text-decoration-underline text-primary small">View All</a> -->
+            <span class="category-count">76 categories</span>
+          </div>
+
+          <div class="category-scroll-container">
+            <div class="category-body d-flex flex-nowrap gap-2">
+              <div class="category-item border rounded active">All Menu</div>
+              <div class="category-item border rounded">Vanilla</div>
+              <div class="category-item border rounded">Butterscotch</div>
+              <div class="category-item border rounded">Chocolate</div>
+              <div class="category-item border rounded">Strawberry</div>
+              <div class="category-item border rounded">Vanilla</div>
+              <div class="category-item border rounded">Pineapple</div>
+              <div class="category-item border rounded">Kulfi</div>
+              <div class="category-item border rounded">Cones</div>
+              <div class="category-item border rounded">Coffee</div>
+              <div class="category-item border rounded">Rocky Road</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Products Section -->
+        <section class="products-container">
+          <div class="products-header">
+            <h5 class="fw-bold mb-3">Products</h5>
+            <span class="category-count">445 items</span>
+          </div>
+          <div class="row g-3">
+            <!-- Example Product Card -->
+            <div class="col-lg-3 col-md-4 col-sm-6">
+              <div class="card product-card">
+                <img src="./images/icecream1.jpeg" class="card-img-top p-3" alt="Product">
+                <div class="card-body">
+                  <h6 class="card-title">Strawberry Scoop</h6>
+                  <p class="small">₹100</p>
+                </div>
+                <button class="add-btn">Add</button>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6">
+              <div class="card product-card">
+                <img src="./images/icecream2.jpeg" class="card-img-top p-3" alt="Product">
+                <div class="card-body">
+                  <h6 class="card-title">Vanilla Scoop</h6>
+                  <p class="small">₹120</p>
+                </div>
+                <button class="add-btn">Add</button>
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
-      <div class="navbar-icons">
-        <div class="dropdown">
-          <a
-            href="#"
-            class="d-flex align-items-center text-dark text-decoration-none dropdown-toggle"
-            id="profileDropdown"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
-            <span>Admin</span>
-          </a>
-          <ul
-            class="dropdown-menu dropdown-menu-end"
-            aria-labelledby="profileDropdown"
-          >
-            <li><a class="dropdown-item" href="#">Profile</a></li>
-            <li>
-              <a class="dropdown-item" href="#">Logout</a>
+
+      <!-- Right Section (30%) -->
+      <div class="col-lg-custom col-md-5 col-sm-12 border-start h-100">
+
+        <!-- Dine-in / Pickup Options -->
+        <section class="order-options mb-4">
+          <div class="d-flex justify-content-between align-items-center">
+            <button class="btn btn-outline-primary w-50 me-2">Dine In</button>
+            <button class="btn btn-outline-secondary w-50">Take away</button>
+          </div>
+        </section>
+
+        <!-- Selected Product / Order Details -->
+        <section class="order-details mb-4 p-3 border rounded bg-light">
+          <h6 class="fw-bold mb-3">Selected Items</h6>
+          <ul class="list-unstyled mb-0">
+            <li class="order-item d-flex justify-content-between align-items-center mb-3">
+              <div class="d-flex align-items-start item-info gap-3">
+                <img src="./images/icecream1.jpeg" alt="Strawberry" class="item-img me-2">
+                <div class="item-content">
+                  <div class="d-flex align-items-start justify-content-between">
+                    <span class="item-name">Strawberry Scoop</span>
+                    <button class="btn p-0 remove-btn ms-2" aria-label="remove item"><i class="bi bi-trash-fill"></i></button>
+                  </div>
+                  <div class="d-flex align-items-center gap-2 mt-1">
+                    <span class="item-price">₹100</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="qty-controls d-flex align-items-center">
+                <button class="qty-btn" aria-label="decrease"><i class="bi bi-dash"></i></button>
+                <div class="qty-display">1</div>
+                <button class="qty-btn" aria-label="increase"><i class="bi bi-plus"></i></button>
+              </div>
+            </li>
+
+            <li class="order-item d-flex justify-content-between align-items-center mb-3">
+              <div class="d-flex align-items-start item-info gap-3">
+                <img src="./images/icecream2.jpeg" alt="Vanilla" class="item-img me-2">
+                <div class="item-content">
+                  <div class="d-flex align-items-start justify-content-between">
+                    <span class="item-name">Vanilla Scoop</span>
+                    <button class="btn p-0 remove-btn ms-2" aria-label="remove item"><i class="bi bi-trash-fill"></i></button>
+                  </div>
+                  <div class="d-flex align-items-center gap-2 mt-1">
+                    <span class="item-price">₹120</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="qty-controls d-flex align-items-center">
+                <button class="qty-btn" aria-label="decrease"><i class="bi bi-dash"></i></button>
+                <div class="qty-display">1</div>
+                <button class="qty-btn" aria-label="increase"><i class="bi bi-plus"></i></button>
+              </div>
+
             </li>
           </ul>
-        </div>
+        </section>
+
+
+        <!-- Billing Section -->
+        <section class="billing-section p-3 border rounded">
+          <div class="d-flex justify-content-between mb-2">
+            <span>Subtotal</span>
+            <span>₹240</span>
+          </div>
+          <div class="d-flex justify-content-between mb-2">
+            <span>Tax</span>
+            <span>₹24</span>
+          </div>
+          <hr>
+          <div class="d-flex justify-content-between fw-bold mb-3">
+            <span>Total</span>
+            <span>₹264</span>
+          </div>
+          <button class="btn btn-success w-100">Proceed to Payment</button>
+        </section>
       </div>
-    </nav>
+    </div>
+  </div>
+  <!-- End main content -->
 
-    <!-- Main Content -->
-    <div class="main-content mt-5"></div>
-    <!-- End main content -->
+  <div class="footer">&copy; POS Dashboard</div>
+</body>
 
-    <div class="footer">&copy; POS Dashboard</div>
-  </body>
 </html>

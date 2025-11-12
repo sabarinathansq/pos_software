@@ -1,0 +1,757 @@
+/* */
+.help-block {
+  color: red !important;
+}
+
+/* ================= THEME VARIABLES ================= */
+:root {
+  /* Sidebar */
+  --sidebar-bg: #0052cc;
+  --sidebar-text: #ffffff;
+  --sidebar-hover: #2a2a3f;
+  --sidebar-active: #0d6efd;
+  /* Navbar */
+  --navbar-bg: #ffffff;
+  --navbar-text: #333333;
+  /* Content */
+  --content-bg: #f8f9fa;
+  --content-text: #333333;
+  /* Primary */
+  --primary-color: #0d6efd;
+  /* Footer */
+  --footer-bg: #ffffff;
+  --footer-text: #333333;
+  /* Transition Speed */
+  --transition-speed: 0.3s;
+}
+
+/* ================= GLOBAL STYLES ================= */
+body {
+  background-color: var(--content-bg);
+  color: var(--content-text);
+  font-family: "Arial", sans-serif;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+/* ================= TOGGLE ICON ANIMATION ================= */
+.sidebar-toggle {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  transition: all var(--transition-speed);
+}
+
+/* Default icon: Hamburger (bi-list) */
+.sidebar-toggle::before {
+  font-family: "bootstrap-icons";
+  content: "\f479";
+  /* bi-list */
+  transition: transform var(--transition-speed);
+}
+
+/* When active (sidebar open/expanded): show close icon */
+.sidebar-toggle.active::before {
+  content: "\f62a";
+  /* bi-x-lg */
+  transform: rotate(180deg);
+}
+
+
+/* ================= NAVBAR ================= */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 56px;
+  background-color: var(--navbar-bg);
+  color: var(--navbar-text);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+  z-index: 1040;
+  z-index: 1101; /* Ensure navbar is above the sidebar and overlay */
+  border-bottom: 1px solid #dee2e6;
+}
+
+.navbar .navbar-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.navbar .navbar-icons {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+
+/* ================= MAIN CONTENT ================= KAMAL*/
+.main-content {
+  margin-left: 85px;
+  margin-bottom: 40px;
+  padding: 1.5rem;
+  transition: margin-left var(--transition-speed);
+}
+
+.sidebar.collapsed ~ .main-content {
+  margin-left: 60px;
+}
+
+/* =================== CATEGORY ================= KAMAL */
+
+.category-header{
+  display: flex;
+  justify-content: space-between;
+}
+
+.category-header > h2 {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.category-count {
+  font-size: 0.9rem;
+  color: gray;
+}
+
+/* Scrollable container */
+.category-scroll-container {
+  overflow-x: auto;         /* enables horizontal scroll */
+  overflow-y: hidden;       /* hides vertical scroll if any */
+  white-space: nowrap;      /* prevents wrapping */
+  padding-bottom: 6px;      /* a bit of breathing space */
+  -webkit-overflow-scrolling: touch; /* smooth scrolling on mobile */
+}
+
+/* Hide scrollbar (cross-browser compatible) */
+.category-scroll-container::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge */
+}
+
+.category-scroll-container {
+  -ms-overflow-style: none;  /* IE/Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+
+.category-item{
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: center;
+  align-items: center;
+  padding: 3px 10px;
+  gap: 5px;
+  border: 1px solid rgb(226, 224, 224);
+  border-radius: 5px;
+  transition: all 0.2 ease;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.category-item:hover {
+  background-color: #b9f6ca;
+  color: #1b5e20;  
+}
+
+.category-item.active {
+  background-color: #81c784;   /* slightly darker mint on hover */
+  color: #fff;
+  box-shadow: 0 3px 6px rgba(231, 51, 112, 0.3);
+}
+
+
+/* =============== PRODUCTS ==================== KAMAL */
+
+.products-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* ================= CARD ================== KAMAL*/
+
+.product-card{
+  border: none;
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  border-radius: 5px;
+  padding: 8px;
+}
+
+
+/* @media (max-width: 992px) {
+  .product-card{
+    width: 80%;
+  }
+} */
+
+.product-card:hover{
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.card-body {
+  margin-top: 8px;
+  padding: 0;
+  text-align: center;
+}
+
+.card-title{
+  font-weight: 600;
+  font-size: 0.8rem;
+  margin: 0;
+}
+
+.card-body > p {
+  color: red;
+  font-weight: 600;
+  font-size: 0.8rem;
+  margin: 0;
+}
+
+.card-img-top {
+  width: 100%;
+  height: 60px;
+  object-fit: contain;
+  border-radius: 5px 5px 0 0;
+  background-color: #f8f9fa; 
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.add-btn {
+  width: 100%;
+  /* max-height: 30px; */
+  margin-top: 2px;
+  background-color: #b9f6ca;
+  color: #1b5e20;    
+  border: none;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  padding: 4px 0;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 5px rgba(76, 175, 80, 0.3);
+}
+
+.add-btn:hover {
+  background-color: #81c784;   /* slightly darker mint on hover */
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(76, 175, 80, 0.4);
+  transform: translateY(-2px);
+}
+
+/* ================= ORDER DETAILS =================== KAMAL*/
+
+
+.col-lg-custom{
+  flex: 0 0 28%;
+  max-width: 28%;
+  /* make the right column a vertical flex container so we can keep billing visible */
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  /* limit height so internal scroll can take effect; subtract navbar + small margins */
+  max-height: calc(100vh - 110px);
+}
+
+.order-details {
+  background-color: #f9fafb;
+  border-radius: 10px;
+  padding: 1rem;
+  /* allow the items area to grow and scroll internally */
+  flex: 1 1 auto;
+  overflow-y: auto;
+}
+
+/* Each item row */
+.order-item {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 0.5rem 0.75rem;
+  transition: box-shadow 0.2s ease;
+}
+.order-item:hover {
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+/* Image + name group */
+.item-img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.item-content{
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* ensure order details match page font sizing */
+.order-details{
+  font-size: 0.8rem;
+}
+
+/* Make billing section use same font-size as order-details */
+.billing-section{
+  font-size: 0.8rem;
+  /* keep billing visible at bottom */
+  flex: 0 0 auto;
+}
+
+/* Small visual: add inner padding scroll space so last item isn't hidden under billing */
+.order-details ul {
+  padding-bottom: 6px;
+}
+
+.item-content > div{
+  display: flex;
+  justify-content: space-between;
+}
+
+.item-name {
+  font-weight: 600;
+  font-size: 0.8rem;
+
+}
+
+.bi-trash-fill{
+  font-size: 0.8rem;
+  color: red;
+}
+
+/* Compact themed quantity controls */
+.qty-controls {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  background: transparent; /* lighter look */
+  border: none;
+  padding: 0;
+  border-radius: 6px;
+}
+
+.qty-btn {
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  background: #f4f8f4; /* subtle green tint */
+  color: #1b5e20;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem; /* slightly smaller */
+  line-height: 1;
+  cursor: pointer;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.qty-btn i {
+  font-size: 0.75rem; /* ensure icon size matches reduced button */
+  line-height: 1;
+}
+
+.qty-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(76,175,80,0.08);
+}
+
+.qty-display {
+  min-width: 18px;
+  text-align: center;
+  font-weight: 700;
+  color: #333;
+  font-size: 0.85rem;
+}
+
+.remove-btn {
+  border: none;
+  background: transparent;
+  color: #d9534f;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 4px 0 0;
+  position: relative;
+  z-index: 2; /* keep trash above qty controls */
+}
+
+.remove-btn i { font-size: 0.85rem; }
+
+/* Ensure left block is flexible and leaves gap to qty controls */
+.order-item .item-info {
+  flex: 1 1 auto;
+  min-width: 0; /* allow truncation */
+  margin-right: 14px; /* stable gap between left block and qty-controls */
+}
+
+/* Truncate long names so they don't push controls */
+.item-name {
+  display: inline-block;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Give qty-controls a lower stacking context so remove-btn stays visible */
+.qty-controls { z-index: 1; }
+
+/* Price */
+.item-price {
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) { /* tablet */
+  .order-details {
+    width: 100%;
+  }
+  .order-item {
+    flex-wrap: wrap;
+    text-align: center;
+  }
+  .order-item .item-info {
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 0.4rem;
+  }
+  .order-item .qty-controls {
+    margin: 0 auto 0.4rem;
+  }
+  .order-item .item-price {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+
+
+/* ================= FOOTER ================= */
+.footer {
+  height: 50px;
+  background-color: #ffffff;
+  border-top: 1px solid #e9ecef;
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  bottom: 0;
+  left: 85px; /* Aligned with main content */
+  right: 0;
+  transition: left var(--transition-speed);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer p {
+  margin: 0; /* Remove default paragraph margin for better vertical alignment */
+}
+
+/* ================= SIDEBAR BASE ================= */
+.sidebar {
+  height: 100vh;
+  width: 85px;
+  background-color: var(--sidebar-bg);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem 0;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  transition: width var(--transition-speed);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1030;
+}
+
+/* ================= EXPANDED SIDEBAR ================= */
+.sidebar.expanded {
+  width: 220px;
+}
+
+/* ================= ICONS CONTAINER ================= */
+.nav-icons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  margin-top: 4rem; /* Add space above the top icons */
+}
+
+.bottom-icons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  margin-bottom: 1rem; /* Adjust this value to control the space from the bottom */
+}
+
+.sidebar.expanded .nav-icons,
+.sidebar.expanded .bottom-icons {
+  align-items: flex-start;
+}
+
+/* ================= ICON LINKS ================= */
+.nav-icons a,
+.bottom-icons a {
+  color: #fff;
+  font-size: 1.4rem;
+  padding: 10px 15px;
+  border-radius: 12px;
+  transition: all var(--transition-speed); /* Animate all property changes */
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: calc(100% - 30px);
+  margin: 0 15px;
+  text-decoration: none;
+  justify-content: center;
+}
+
+.nav-icons a i,
+.bottom-icons a i {
+  width: 20px;
+  text-align: center;
+}
+
+.sidebar.expanded .nav-icons a,
+.sidebar.expanded .bottom-icons a {
+  justify-content: flex-start;
+}
+
+/* Specifically move the "Products" icon (3rd child) slightly to the left */
+.nav-icons a:nth-child(3) i {
+  position: relative;
+  left: -2px; /* Adjust this value for desired positioning */
+}
+
+/* Specifically move the "Dashboard" icon (1st child) slightly to the left */
+.nav-icons a:first-child i {
+  position: relative;
+  left: -2px; /* Adjust this value for desired positioning */
+}
+
+/* ================= ICON HOVER ================= */
+.nav-icons a:hover,
+.nav-icons a.active:hover,
+.bottom-icons a:hover {
+  background-color: rgba(255, 255, 255, 0.277);
+  transform: translateY(-3px) scale(1.05); /* Lift and grow effect */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Add a subtle shadow for depth */
+}
+
+/* Style for the currently active link */
+.nav-icons a.active {
+  background-color: rgba(255, 255, 255, 0.15); /* A subtle highlight for the active item when not hovered */
+}
+
+/* ================= TEXT HIDDEN WHEN COLLAPSED ================= */
+.nav-icons a span,
+.bottom-icons a span {
+  display: none;
+  white-space: nowrap;
+  color: #fff;
+  font-size: 1rem;
+}
+
+/* ================= SHOW TEXT WHEN EXPANDED ================= */
+.sidebar.expanded .nav-icons a span,
+.sidebar.expanded .bottom-icons a span {
+  display: inline;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 992px) {
+  .sidebar {
+    width: 60px;
+  }
+
+  .sidebar.expanded {
+    width: 240px;
+    box-shadow: 0 0 10px rgba(240, 240, 240, 0.4);
+  }
+
+  .main-content {
+    margin-left: 60px;
+  }
+
+  .sidebar.expanded~.main-content {
+    margin-left: 60px; /* Keep content margin same when sidebar overlays */
+  }
+
+  .footer {
+    left: 60px;
+  }
+
+  .sidebar.expanded~.footer {
+    left: 60px; /* Keep footer margin same when sidebar overlays */
+  }
+}
+
+/* ================= MOBILE RESPONSIVE (SMALLER SCREENS) ================= */
+@media (max-width: 768px) {
+  .sidebar {
+    left: -240px; /* Hide sidebar off-screen */
+    z-index: 1100;
+  }
+
+  /* When expanded on mobile, slide it into view */
+  .sidebar.expanded {
+    left: 0;
+  }
+
+  .main-content,
+  .sidebar.expanded~.main-content,
+  .footer,
+  .sidebar.expanded~.footer {
+    margin-left: 0; /* Use full width */
+    left: 0;
+  }
+}
+
+/* Extra mobile tweaks for the right column and order list
+   - make the right column full-width on small phones
+   - remove the fixed max-height so page can scroll naturally
+   - ensure each order row wraps cleanly and qty controls stay usable
+*/
+@media (max-width: 600px) {
+  .col-lg-custom {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+    display: block; /* don't force column flex behavior on very small screens */
+    gap: 10px;
+    border-left: none; /* avoid unnecessary vertical divider on narrow screens */
+    max-height: none; /* allow document scrolling */
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+  }
+
+  /* Let the order-details flow normally and not try to internally scroll */
+  .col-lg-custom .order-details {
+    flex: none;
+    overflow: visible;
+    max-height: none;
+    padding: 0.75rem;
+  }
+
+  /* Make billing full width and push it below the list naturally */
+  .col-lg-custom .billing-section {
+    position: static;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.75rem;
+  }
+
+  /* Keep each order row on a single line and avoid wrapping which pushes qty below */
+  .order-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: nowrap; /* prevent controls dropping to next line */
+  }
+
+  /* Left block should flex and truncate if needed */
+  .order-item .item-info {
+    flex: 1 1 65%;
+    min-width: 0; /* allow truncation */
+    margin-right: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  /* Qty controls sit to the right and keep a stable width */
+  .order-item .qty-controls {
+    flex: 0 0 120px; /* fixed-ish area for buttons + qty */
+    width: auto;
+    justify-content: flex-end;
+    margin: 0;
+  }
+
+  /* Slightly larger touch targets on very small devices */
+  .qty-btn {
+    width: 30px;
+    height: 30px;
+    font-size: 0.85rem;
+  }
+
+  .qty-display {
+    min-width: 26px;
+  }
+
+  /* Ensure remove button doesn't push layout on tiny screens */
+  .remove-btn {
+    padding-right: 2px;
+    margin-left: 6px;
+  }
+
+  /* If content is very long, item-name should shrink and show ellipsis */
+  .order-item .item-content .item-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: block;
+  }
+}
+
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(199, 192, 216, 0.296);
+  z-index: 1099; /* Below sidebar, above content */
+  display: none; /* Hidden by default */
+}
+
+.sidebar-overlay.active {
+  display: block; /* Show when sidebar is active */
+}
+
+/* Mobile: replace left-only border with an outer card and add top spacing
+   This targets the right column when it stacks under the products on small screens.
+*/
+@media (max-width: 600px) {
+  .col-lg-custom.border-start {
+    border-left: none !important; /* remove the left divider */
+    border: 1px solid #e9ecef !important; /* full border on all sides */
+    border-radius: 10px;
+    margin-top: 1rem; /* space from the products above */
+    padding: 0.5rem; /* gentle inner spacing */
+    background: #fff; /* stand out as a card */
+  }
+
+  /* avoid double borders inside the boxed column — make internal sections blend */
+  .col-lg-custom.border-start .order-details,
+  .col-lg-custom.border-start .billing-section {
+    border: none;
+    box-shadow: none;
+    background: transparent;
+    padding: 0.5rem 0; /* keep inner spacing but no extra border */
+  }
+}

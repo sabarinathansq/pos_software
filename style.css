@@ -162,17 +162,6 @@ a:hover {
   transform: rotate(180deg);
 }
 
-/* ================= MAIN CONTENT ================= */
-.main-content {
-  margin-left: 240px;
-  padding: 1.5rem;
-  transition: margin-left var(--transition-speed);
-}
-
-.sidebar.collapsed ~ .main-content {
-  margin-left: 60px;
-}
-
 /* ================= NAVBAR ================= */
 .navbar {
   position: fixed;
@@ -201,6 +190,317 @@ a:hover {
   align-items: center;
   gap: 1rem;
 }
+
+.navbar-custom-icons-container{
+  height: 30px;
+  width: 30px;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+/* ================= MAIN CONTENT ================= KAMAL*/
+.main-content {
+  margin-left: 240px;
+  margin-bottom: 40px;
+  padding: 1.5rem;
+  transition: margin-left var(--transition-speed);
+}
+
+.sidebar.collapsed ~ .main-content {
+  margin-left: 60px;
+}
+
+/* =================== CATEGORY ================= KAMAL */
+
+.category-header{
+  display: flex;
+  justify-content: space-between;
+}
+
+.category-header > h2 {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.category-count {
+  font-size: 0.9rem;
+  color: gray;
+}
+
+/* Scrollable container */
+.category-scroll-container {
+  overflow-x: auto;         /* enables horizontal scroll */
+  overflow-y: hidden;       /* hides vertical scroll if any */
+  white-space: nowrap;      /* prevents wrapping */
+  padding-bottom: 6px;      /* a bit of breathing space */
+  -webkit-overflow-scrolling: touch; /* smooth scrolling on mobile */
+}
+
+/* Hide scrollbar (cross-browser compatible) */
+.category-scroll-container::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge */
+}
+
+.category-scroll-container {
+  -ms-overflow-style: none;  /* IE/Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+
+.category-item{
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: center;
+  align-items: center;
+  padding: 3px 10px;
+  gap: 5px;
+  border: 1px solid rgb(226, 224, 224);
+  border-radius: 5px;
+  transition: all 0.2 ease;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.category-item:hover {
+  background-color: #b9f6ca;
+  color: #1b5e20;  
+}
+
+.category-item.active {
+  background-color: #81c784;   /* slightly darker mint on hover */
+  color: #fff;
+  box-shadow: 0 3px 6px rgba(231, 51, 112, 0.3);
+}
+
+
+/* =============== PRODUCTS ==================== KAMAL */
+
+.products-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* ================= CARD ================== KAMAL*/
+
+.product-card{
+  border: none;
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  border-radius: 5px;
+  padding: 8px;
+}
+
+
+@media (max-width: 992px) {
+  .product-card{
+    width: 80%;
+  }
+}
+
+.product-card:hover{
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.card-body {
+  margin-top: 8px;
+  padding: 0;
+  text-align: center;
+}
+
+.card-title{
+  font-weight: 600;
+  font-size: 0.8rem;
+  margin: 0;
+}
+
+.card-body > p {
+  color: red;
+  font-weight: 600;
+  font-size: 0.8rem;
+  margin: 0;
+}
+
+.card-img-top {
+  width: 100%;
+  height: 60px;
+  object-fit: contain;
+  border-radius: 5px 5px 0 0;
+  background-color: #f8f9fa; 
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.add-btn {
+  width: 100%;
+  /* max-height: 30px; */
+  /* margin-top: 2px; */
+  background-color: #b9f6ca;
+  color: #1b5e20;    
+  border: none;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  padding: 4px 0;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 5px rgba(76, 175, 80, 0.3);
+}
+
+.add-btn:hover {
+  background-color: #81c784;   /* slightly darker mint on hover */
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(76, 175, 80, 0.4);
+  transform: translateY(-2px);
+}
+
+/* ================= ORDER DETAILS =================== KAMAL*/
+
+.col-lg-custom{
+  flex: 0 0 30%;
+  max-width: 30%;
+}
+
+.order-details {
+  background-color: #f9fafb;
+  border-radius: 10px;
+  padding: 1rem;
+}
+
+/* Each item row */
+.order-item {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 0.5rem 0.75rem;
+  transition: box-shadow 0.2s ease;
+}
+.order-item:hover {
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+/* Image + name group */
+.item-img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.item-content{
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* ensure order details match page font sizing */
+.order-details{
+  font-size: 0.8rem;
+}
+
+.item-content > div{
+  display: flex;
+  justify-content: space-between;
+}
+
+.item-name {
+  font-weight: 600;
+  font-size: 0.8rem;
+
+}
+
+.bi-trash-fill{
+  font-size: 0.8rem;
+  color: red;
+}
+
+/* Compact themed quantity controls */
+.qty-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #fff;
+  border: 1px solid #e9ecef;
+  padding: 3px 6px;
+  border-radius: 8px;
+}
+
+.qty-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  border: 1px solid #e0e0e0;
+  background: linear-gradient(180deg, #f8fff8, #eef9ee);
+  color: #1b5e20;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem; /* match other icons */
+  cursor: pointer;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.qty-btn i {
+  font-size: 0.8rem; /* ensure icon size matches other icons */
+  line-height: 1;
+}
+
+.qty-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(76,175,80,0.08);
+}
+
+.qty-display {
+  min-width: 22px;
+  text-align: center;
+  font-weight: 700;
+  color: #333;
+  font-size: 0.9rem;
+}
+
+.remove-btn {
+  border: none;
+  background: transparent;
+  color: #d9534f;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.remove-btn i { font-size: 0.8rem; }
+
+/* Price */
+.item-price {
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) { /* tablet */
+  .order-details {
+    width: 100%;
+  }
+  .order-item {
+    flex-wrap: wrap;
+    text-align: center;
+  }
+  .order-item .item-info {
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 0.4rem;
+  }
+  .order-item .qty-controls {
+    margin: 0 auto 0.4rem;
+  }
+  .order-item .item-price {
+    width: 100%;
+    text-align: center;
+  }
+}
+
 
 /* ================= FOOTER ================= */
 .footer {
