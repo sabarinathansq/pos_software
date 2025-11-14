@@ -97,7 +97,7 @@ a:hover {
   justify-content: space-between;
   padding: 0 1rem;
   z-index: 1040;
-  z-index: 1201; /* Ensure navbar is above the sidebar and overlay */
+  z-index: 1101; /* Ensure navbar is above the sidebar and overlay */
   border-bottom: 1px solid #dee2e6;
 }
 
