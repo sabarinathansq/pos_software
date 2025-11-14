@@ -115,29 +115,105 @@
     <!-- ✅ Main Content -->
     <div class="main-content flex-grow-1 p-4">
       <div class="container">
-        <h3 class="mb-4 fw-bold text-dark">Profile Information</h3>
-
-        <div class="card shadow-sm p-4 border-0" style="max-width: 500px; background-color: #ffffff;">
-          <div class="mb-3">
-            <label class="form-label fw-bold text-dark">Name</label>
-            <input type="text" class="form-control" value="Monkey D. Luffy" readonly>
+        <!-- Profile Information Card -->
+        <div class="card shadow-sm mb-4">
+          <div class="card-header fw-bold">
+            Profile Information
           </div>
-
-          <div class="mb-3">
-            <label class="form-label fw-bold text-dark">Phone Number</label>
-            <input type="text" class="form-control" value="+91 98765 43210" readonly>
-          </div>
-
-          <div class="mb-3">
-            <label class="form-label fw-bold text-dark">Email ID</label>
-            <input type="email" class="form-control" value="luffy@posmail.com" readonly>
-          </div>
-
-          <div class="mb-3">
-            <label class="form-label fw-bold text-dark">Password</label>
-            <input type="password" class="form-control" value="********" readonly>
+          <div class="card-body p-0">
+            <table class="table table-bordered mb-0">
+              <tbody>
+                <tr>
+                  <td class="fw-semibold" style="width: 30%;">Name</td>
+                  <td>Monkey D. Luffy</td>
+                </tr>
+                <tr>
+                  <td class="fw-semibold">Phone Number</td>
+                  <td>+91 98765 43210</td>
+                </tr>
+                <tr>
+                  <td class="fw-semibold">Email ID</td>
+                  <td>luffy@posmail.com</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
+
+        <!-- Billing and Shipping Address Row -->
+        <div class="row mt-4">
+          <!-- Billing Address Card -->
+          <div class="col-md-6 mb-4">
+            <div class="card shadow-sm">
+              <div class="card-header fw-bold">
+                Billing Address
+              </div>
+              <div class="card-body p-0">
+                <table class="table table-bordered mb-0">
+                  <tbody>
+                    <tr>
+                      <td class="fw-semibold">Street name</td>
+                      <td>Dawn Island</td>
+                    </tr>
+                    <tr>
+                      <td class="fw-semibold">City</td>
+                      <td>Foosha Village</td>
+                    </tr>
+                    <tr>
+                      <td class="fw-semibold">State</td>
+                      <td>East Blue</td>
+                    </tr>
+                    <tr>
+                      <td class="fw-semibold">Country</td>
+                      <td>World Government</td>
+                    </tr>
+                    <tr>
+                      <td class="fw-semibold">Zip Code</td>
+                      <td>12345</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- Shipping Address Card -->
+          <div class="col-md-6 mb-4">
+            <div class="card shadow-sm">
+              <div class="card-header fw-bold">
+                Shipping Address
+              </div>
+              <div class="card-body p-0">
+                <!-- This table is identical for demonstration. You can change the values. -->
+                <table class="table table-bordered mb-0">
+                  <tbody>
+                    <tr>
+                      <td class="fw-semibold">Street name</td>
+                      <td>Thousand Sunny</td>
+                    </tr>
+                    <tr>
+                      <td class="fw-semibold">City</td>
+                      <td>Grand Line</td>
+                    </tr>
+                    <tr>
+                      <td class="fw-semibold">State</td>
+                      <td>New World</td>
+                    </tr>
+                    <tr>
+                      <td class="fw-semibold">Country</td>
+                      <td>Seas</td>
+                    </tr>
+                    <tr>
+                      <td class="fw-semibold">Zip Code</td>
+                      <td>54321</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
