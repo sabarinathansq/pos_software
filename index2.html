@@ -2708,7 +2708,27 @@ a:hover {
       });
     }
   });
+  // --- Product View Toggle Handler ---
+$(document).ready(function() {
+    const $container = $('.products-container');
 
+    // Set the initial state attribute
+    $container.attr('data-view', 'card-view'); 
+
+    // Handle Card View click
+    $('#cardViewBtn').on('click', function() {
+        $container.attr('data-view', 'card-view');
+        $('#cardViewBtn').removeClass('btn-outline-primary').addClass('btn-primary active');
+        $('#listViewBtn').removeClass('btn-primary active').addClass('btn-outline-primary');
+    });
+
+    // Handle List View click
+    $('#listViewBtn').on('click', function() {
+        $container.attr('data-view', 'list-view');
+        $('#listViewBtn').removeClass('btn-outline-primary').addClass('btn-primary active');
+        $('#cardViewBtn').removeClass('btn-primary active').addClass('btn-outline-primary');
+    });
+});
   // Category carousel controls ------------------------------
   (function setupCategoryCarousel() {
     const $container = $('.category-scroll-container');
