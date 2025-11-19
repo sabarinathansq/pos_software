@@ -20,20 +20,20 @@
 <body>
   <!-- Overlay for mobile sidebar -->
   <div class="sidebar-overlay" id="sidebarOverlay"></div>
-  
+
   <!-- Flyout container (JS will use this) -->
   <div class="sidebar-flyout"></div>
 
   <!-- ✅ Navbar -->
-  <nav class="navbar">
-    <div class="navbar-header">
+  <nav class="navbar fixed-top bg-white border-bottom px-3" style="height: 56px; z-index: 1101;">
+    <div class="d-flex align-items-center gap-3">
       <span class="sidebar-toggle fs-4 fw-bolder" id="sidebarToggle" style="cursor:pointer;"></span>
       <span class="fw-bold">POS</span>
     </div>
 
     <div class="navbar-icons d-flex align-items-center gap-3">
       <a href="index2.html" class="btn btn-primary btn-sm d-flex align-items-center" role="button">
-        <i class="fa-solid fa-plus me-1"></i> New Bill
+        <i class="fa-solid fa-file-invoice-dollar me-1" style="font-size: 0.85em;"></i><span class="d-none d-sm-inline"> New Bill</span>
       </a>
       <i class="bi bi-bell-fill" id="notificationIcon" title="Notifications"></i>
       <i class="fa-solid fa-expand" id="fullscreenToggle" title="Fullscreen" style="cursor: pointer;"></i>
@@ -52,62 +52,66 @@
 
   <div class="d-flex" style="height: calc(100vh - 60px);">
     <!-- ✅ Sidebar Start -->
-    <div class="sidebar" id="sidebar" role="navigation">
-      <div class="nav-icons">
+    <div class="sidebar d-flex flex-column justify-content-between py-4" id="sidebar" role="navigation">
+      <div class="nav-icons d-flex flex-column align-items-center gap-3 mt-5">
         
         <!-- Dashboard (active) -->
-        <div class="nav-item">
-          <a href="dashboard.html" class="active">
+        <div class="nav-item w-75 mx-auto">
+          <a href="dashboard.html" class="active d-flex align-items-center justify-content-center text-decoration-none p-2 rounded-3">
             <i class="fa-solid fa-house"></i>
-            <span>Dashboard</span>
+            <span class="d-none ms-3">Dashboard</span>
           </a>
+          <ul class="sidebar-submenu p-1 m-0" style="width: 180px;">
+            <li><a href="#" class="d-block p-1 rounded text-decoration-none">Overview</a></li>
+            <li><a href="#" class="d-block p-1 rounded text-decoration-none">Analytics</a></li>
+          </ul>
         </div>
         
         <!-- Bill (no submenu) -->
-        <div class="nav-item">
-          <a href="#">
+        <div class="nav-item w-75 mx-auto">
+          <a href="#" class="d-flex align-items-center justify-content-center text-decoration-none p-2 rounded-3">
             <i class="fa-solid fa-file-invoice"></i>
-            <span>Bill</span>
+            <span class="d-none ms-3">Bill</span>
           </a>
         </div>
         
         <!-- Products (no submenu) -->
-        <div class="nav-item">
-          <a href="#">
+        <div class="nav-item w-75 mx-auto">
+          <a href="#" class="d-flex align-items-center justify-content-center text-decoration-none p-2 rounded-3">
             <i class="fa-solid fa-box-open"></i>
-            <span>Products</span>
+            <span class="d-none ms-3">Products</span>
           </a>
         </div>
         
         <!-- Report (no submenu) -->
-        <div class="nav-item">
-          <a href="#">
+        <div class="nav-item w-75 mx-auto">
+          <a href="#" class="d-flex align-items-center justify-content-center text-decoration-none p-2 rounded-3">
             <i class="fa-solid fa-chart-column"></i>
-            <span>Report</span>
+            <span class="d-none ms-3">Report</span>
           </a>
         </div>
         
         <!-- Profile (no submenu) -->
-        <div class="nav-item">
-          <a href="profile.html">
+        <div class="nav-item w-75 mx-auto">
+          <a href="profile.html" class="d-flex align-items-center justify-content-center text-decoration-none p-2 rounded-3">
             <i class="fa-solid fa-user"></i>
-            <span>Profile</span>
+            <span class="d-none ms-3">Profile</span>
           </a>
         </div>
 
       </div>
       
-      <div class="bottom-icons">
-        <div class="nav-item">
-          <a href="#">
+      <div class="bottom-icons d-flex flex-column align-items-center gap-3 mb-3">
+        <div class="nav-item w-75 mx-auto">
+          <a href="#" class="d-flex align-items-center justify-content-center text-decoration-none p-2 rounded-3">
             <i class="fa-solid fa-gear"></i>
-            <span>Settings</span>
+            <span class="d-none ms-3">Settings</span>
           </a>
         </div>
-        <div class="nav-item">
-          <a href="#">
+        <div class="nav-item w-75 mx-auto">
+          <a href="#" class="d-flex align-items-center justify-content-center text-decoration-none p-2 rounded-3">
             <i class="fa-solid fa-power-off"></i>
-            <span>Logout</span>
+            <span class="d-none ms-3">Logout</span>
           </a>
         </div>
       </div>
@@ -115,14 +119,14 @@
     <!-- ✅ Sidebar End -->
 
     <!-- ✅ Main Content -->
-    <div class="main-content flex-grow-1 p-4 d-flex justify-content-center align-items-center">
+    <div class="main-content flex-grow-1 p-4 d-flex justify-content-center align-items-center" style="min-height: calc(100vh - 56px);">
       <h1 class="display-4">Welcome to Dashboard</h1>
     </div>
   </div>
 
   <!-- ✅ Footer -->
-  <div class="footer">
-    <p>&copy; 2025 POS System. All rights reserved.</p>
+  <div class="footer d-flex align-items-center justify-content-center bg-white border-top shadow-top">
+    <p class="m-0">&copy; 2025 POS System. All rights reserved.</p>
   </div>
 
   <!-- ✅ jQuery -->

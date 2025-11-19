@@ -33,15 +33,6 @@ body {
   overflow-x: hidden;
 }
 
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-a:hover {
-  text-decoration: none;
-}
-
 /* ================= TOGGLE ICON ANIMATION ================= */
 .sidebar-toggle {
   position: relative;
@@ -72,7 +63,6 @@ a:hover {
 /* ================= MAIN CONTENT ================= */
 .main-content {
   margin-left: 85px;
-  padding: 1.5rem;
   margin-top: 56px; /* Push content below the fixed navbar */
   transition: margin-left var(--transition-speed);
   height: calc(100vh - 56px); /* Full height minus navbar */
@@ -84,57 +74,17 @@ a:hover {
 }
 
 /* ================= NAVBAR ================= */
-.navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 56px;
-  background-color: var(--navbar-bg);
-  color: var(--navbar-text);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 1rem;
-  z-index: 1040;
-  z-index: 1101; /* Ensure navbar is above the sidebar and overlay */
-  border-bottom: 1px solid #dee2e6;
-}
-
-.navbar .navbar-header {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.navbar .navbar-icons {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
 /* ================= FOOTER ================= */
 .footer {
   height: 50px;
-  background-color: #ffffff;
-  border-top: 1px solid #e9ecef;
-  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
   position: fixed;
   bottom: 0;
   left: 0; /* Aligned with main content */
   right: 0;
   transition: left var(--transition-speed);
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .sidebar.expanded ~ .footer {
-  left: 220px;
-}
-
-.footer p {
-  margin: 0; /* Remove default paragraph margin for better vertical alignment */
 }
 
 /* ================= SIDEBAR BASE ================= */
@@ -142,11 +92,7 @@ a:hover {
   height: calc(100vh - 50px); /* Full viewport height minus footer */
   width: 85px;
   background-color: var(--sidebar-bg);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   align-items: center;
-  padding: 1.2rem 0;
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
   overflow-y: auto;
@@ -164,21 +110,11 @@ a:hover {
 
 /* ================= ICONS CONTAINER ================= */
 .nav-icons {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
   width: 100%;
-  margin-top: 4rem; /* Add space above the top icons */
 }
 
 .bottom-icons {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
   width: 100%;
-  margin-bottom: 1rem; /* Adjust this value to control the space from the bottom */
 }
 
 .sidebar.expanded .nav-icons,
@@ -188,22 +124,13 @@ a:hover {
 
 /* ================= NAV ITEM & LINKS ================= */
 .nav-item {
-  position: relative; /* For submenu positioning */
-  width: calc(100% - 30px);
-  margin: 0 15px;
+  position: relative; /* For submenu positioning */ 
 }
 
 .nav-item > a {
   color: #fff;
   font-size: 1.4rem;
-  padding: 10px 15px;
-  border-radius: 12px;
   transition: all var(--transition-speed);
-  display: flex;
-  align-items: center;
-  width: 100%;
-  text-decoration: none;
-  justify-content: center;
 }
 
 .nav-item > a i:first-child { /* The main icon */
@@ -230,26 +157,21 @@ a:hover {
 
 /* ================= TEXT HIDDEN WHEN COLLAPSED ================= */
 .nav-item > a span {
-  display: none;
   white-space: nowrap;
   color: #fff;
   font-size: 1rem;
-  margin-left: 12px; /* Create space between icon and text */
 }
-
 
 /* ================= SHOW TEXT WHEN EXPANDED ================= */
 .sidebar.expanded .nav-item > a span {
   display: inline;
+  margin-left: 12px;
 }
 
 /* ================= HOVER SUBMENU (EXPANDED) ================= */
 .sidebar-submenu {
   list-style: none;
-  padding: 2px;
-  margin: 0;
   display: none; /* Hide by default */
-  width: 180px;/* Make it less wide */
  backdrop-filter: blur(5px); /* Modern frosted glass effect */
   border-radius: 0; /* Square corners */
   z-index: 1102; /* Above everything */
@@ -266,12 +188,9 @@ a:hover {
 }
 
 .sidebar-submenu li a {
-  font-size: 0.4em; /* Slightly smaller font */
-  padding: 4px  8px; /* Adjust padding */
-  display: block;
-  border-radius: 4px;
+  font-size: 0.9em; /* Slightly smaller font */
   white-space: nowrap;
-    transition: background-color 0.2s ease, color 0.2s ease; /* Smooth hover transition */
+  transition: background-color 0.2s ease, color 0.2s ease; /* Smooth hover transition */
 
 }
 
@@ -279,60 +198,24 @@ a:hover {
   background-color: rgba(255,255,255,0.1);
 }
 
-
 /* ================= JS-POWERED FLYOUT (COLLAPSED) ================= */
 .sidebar-flyout {
   position: fixed;
   display: none;
   width: 120px; /* Narrower width */
   background-color: #353839; /* Dark background from screenshot */
-  border-radius:4px;
-  box-shadow: 0  rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   z-index: 1102; /* Above everything */
-  padding: 0; /* Changed */
+  padding: 0;
   pointer-events: auto; /* Make sure it's hoverable */
 }
-
 .sidebar-flyout .flyout-header {
   font-size: 1rem;
   font-weight: 400;
   padding: 10px 15px; /* Match sidebar link padding */
   color: oklch(96.513% 0.00333 67.04 / 0.966);
   border-bottom: 1px solid #455a64;
-}
-
-
-/* ================= RESPONSIVE ================= */
-@media (max-width: 992px) {
-  .sidebar {
-    width: 60px;
-  }
-
-  .sidebar.expanded {
-    width: 240px;
-    box-shadow: 0 0 10px rgba(240, 240, 240, 0.4);
-  }
-
-  .main-content {
-    margin-left: 60px;
-  }
-
-  .sidebar.expanded~.main-content {
-    margin-left: 60px; /* Keep content margin same when sidebar overlays */
-  }
-
-  .footer {
-    left: 60px;
-  }
-
-  .sidebar.expanded~.footer {
-    left: 60px; /* Keep footer margin same when sidebar overlays */
-  }
-  
-  /* On tablet, make CSS hover menu work from 60px */
-  .sidebar.expanded .nav-item:hover > .sidebar-submenu {
-    left: 60px; 
-  }
 }
 
 /* ================= MOBILE RESPONSIVE (SMALLER SCREENS) ================= */
@@ -350,17 +233,6 @@ a:hover {
   .main-content,
   .sidebar.expanded~.main-content,
   .footer,
-  .sidebar.expanded~.footer {
-    margin-left: 0; /* Use full width */
-    left: 0;
-  }
-  
-  /* Disable hover menus on mobile, use toggle */
-  .sidebar.expanded .nav-item:hover > .sidebar-submenu {
-    display: none;
-  }
-  /* You would need to add click-to-toggle logic for mobile if needed */
-}
 
 .sidebar-overlay {
   position: fixed;
@@ -371,15 +243,4 @@ a:hover {
   background-color: rgba(199, 192, 216, 0.296);
   z-index: 1099; /* Below sidebar, above content */
   display: none; /* Hidden by default */
-}
-
-.sidebar-overlay.active {
-  display: block; /* Show when sidebar is active */
-}
-
-/* Ensure main content takes up available height on mobile */
-@media (max-width: 768px) {
-  .main-content {
-    min-height: calc(100vh - 56px); /* Full height minus navbar */
-  }
 }

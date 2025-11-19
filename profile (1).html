@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />  <title>Profile | POS</title>
+
+  <!-- ✅ Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- ✅ Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+
+  <!-- ✅ Font Awesome 6 -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+
+  <!-- ✅ Custom CSS -->
+  <link href="styleprofile.css" rel="stylesheet">
+</head>
+<body>
+  <!-- Overlay for mobile sidebar -->
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- Flyout container (JS will use this) -->
+  <div class="sidebar-flyout"></div>
+  
+  <!-- ✅ Navbar -->
+  <nav class="navbar fixed-top bg-white border-bottom px-3" style="height: 56px; z-index: 1101;">
+    <div class="d-flex align-items-center gap-3">
+      <span class="sidebar-toggle fs-4 fw-bolder" id="sidebarToggle" style="cursor:pointer;"></span>
+      <span class="fw-bold">POS</span>
+    </div>
+    <div class="navbar-icons d-flex align-items-center gap-3">
+      <a href="index2.html" class="btn btn-primary btn-sm d-flex align-items-center" role="button">
+        <i class="fa-solid fa-file-invoice-dollar me-1" style="font-size: 0.85em;"></i><span class="d-none d-sm-inline"> New Bill</span>
+      </a>
+      <i class="bi bi-bell-fill" id="notificationIcon" title="Notifications"></i>
+      <i class="fa-solid fa-expand" id="fullscreenToggle" title="Fullscreen" style="cursor: pointer;"></i>
+
+      <div class="dropdown">
+        <a href="#" class="d-flex align-items-center text-dark text-decoration-none dropdown-toggle" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+          <span class="ms-2">Admin</span>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
+          <li><a class="dropdown-item" href="#">Profile</a></li>
+          <li><a class="dropdown-item" href="#">Logout</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="d-flex" style="height: calc(100vh - 60px);">
+    <!-- ✅ Sidebar Start -->
+    <div class="sidebar d-flex flex-column justify-content-between py-4" id="sidebar" role="navigation">
+      <div class="nav-icons d-flex flex-column align-items-center gap-3 mt-5">
+        
+        <!-- Dashboard (no submenu on this page) -->
+        <div class="nav-item w-75 mx-auto">
+          <a href="dashboard.html" class="d-flex align-items-center justify-content-center text-decoration-none p-2 rounded-3">
+            <i class="fa-solid fa-house"></i>
+            <span class="d-none ms-3">Dashboard</span>
+          </a>
+          <ul class="sidebar-submenu p-1 m-0" style="width: 180px;">
+            <li><a href="#" class="d-block p-1 rounded text-decoration-none">Overview</a></li>
+            <li><a href="#" class="d-block p-1 rounded text-decoration-none">Analytics</a></li>
+          </ul>
+        </div>
+        
+        <!-- Bill (no submenu) -->
+        <div class="nav-item w-75 mx-auto">
+          <a href="#" class="d-flex align-items-center justify-content-center text-decoration-none p-2 rounded-3">
+            <i class="fa-solid fa-file-invoice"></i>
+            <span class="d-none ms-3">Bill</span>
+          </a>
+        </div>
+        
+        <!-- Products (no submenu) -->
+        <div class="nav-item w-75 mx-auto">
+          <a href="#" class="d-flex align-items-center justify-content-center text-decoration-none p-2 rounded-3">
+            <i class="fa-solid fa-box-open"></i>
+            <span class="d-none ms-3">Products</span>
+          </a>
+        </div>
+        
+        <!-- Report (no submenu) -->
+        <div class="nav-item w-75 mx-auto">
+          <a href="#" class="d-flex align-items-center justify-content-center text-decoration-none p-2 rounded-3">
+            <i class="fa-solid fa-chart-column"></i>
+            <span class="d-none ms-3">Report</span>
+          </a>
+        </div>
+        
+        <!-- Profile (no submenu, but active) -->
+        <div class="nav-item w-75 mx-auto">
+          <a href="profile.html" class="active d-flex align-items-center justify-content-center text-decoration-none p-2 rounded-3">
+            <i class="fa-solid fa-user"></i>
+            <span class="d-none ms-3">Profile</span>
+          </a>
+        </div>
+
+      </div>
+      
+      <div class="bottom-icons d-flex flex-column align-items-center gap-3 mb-3">
+        <div class="nav-item w-75 mx-auto">
+          <a href="#" class="d-flex align-items-center justify-content-center text-decoration-none p-2 rounded-3">
+            <i class="fa-solid fa-gear"></i>
+            <span class="d-none ms-3">Settings</span>
+          </a>
+        </div>
+        <div class="nav-item w-75 mx-auto">
+          <a href="#" class="d-flex align-items-center justify-content-center text-decoration-none p-2 rounded-3">
+            <i class="fa-solid fa-power-off"></i>
+            <span class="d-none ms-3">Logout</span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <!-- ✅ Sidebar End -->
+
+    <!-- ✅ Main Content -->
+    <div class="main-content flex-grow-1 p-4" style="min-height: calc(100vh - 56px);">
+      <div class="container">
+        <!-- Profile Information Card -->
+        <div class="card shadow-sm mb-4">
+          <div class="card-header fw-bold">
+            Profile Information
+          </div>
+          <div class="card-body p-0">
+            <table class="table table-bordered mb-0">
+              <tbody>
+                <tr>
+                  <td class="fw-semibold" style="width: 30%;">Name</td>
+                  <td>Monkey D. Luffy</td>
+                </tr>
+                <tr>
+                  <td class="fw-semibold">Phone Number</td>
+                  <td>+91 98765 43210</td>
+                </tr>
+                <tr>
+                  <td class="fw-semibold">Email ID</td>
+                  <td>luffy@posmail.com</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Billing and Shipping Address Row -->
+        <div class="row mt-4">
+          <!-- Billing Address Card -->
+          <div class="col-md-6 mb-4">
+            <div class="card shadow-sm">
+              <div class="card-header fw-bold">
+                Billing Address
+              </div>
+              <div class="card-body p-0">
+                <table class="table table-bordered mb-0">
+                  <tbody>
+                    <tr>
+                      <td class="fw-semibold">Street name</td>
+                      <td>Dawn Island</td>
+                    </tr>
+                    <tr>
+                      <td class="fw-semibold">City</td>
+                      <td>Foosha Village</td>
+                    </tr>
+                    <tr>
+                      <td class="fw-semibold">State</td>
+                      <td>East Blue</td>
+                    </tr>
+                    <tr>
+                      <td class="fw-semibold">Country</td>
+                      <td>World Government</td>
+                    </tr>
+                    <tr>
+                      <td class="fw-semibold">Zip Code</td>
+                      <td>12345</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- Shipping Address Card -->
+          <div class="col-md-6 mb-4">
+            <div class="card shadow-sm">
+              <div class="card-header fw-bold">
+                Shipping Address
+              </div>
+              <div class="card-body p-0">
+                <!-- This table is identical for demonstration. You can change the values. -->
+                <table class="table table-bordered mb-0">
+                  <tbody>
+                    <tr>
+                      <td class="fw-semibold">Street name</td>
+                      <td>Thousand Sunny</td>
+                    </tr>
+                    <tr>
+                      <td class="fw-semibold">City</td>
+                      <td>Grand Line</td>
+                    </tr>
+                    <tr>
+                      <td class="fw-semibold">State</td>
+                      <td>New World</td>
+                    </tr>
+                    <tr>
+                      <td class="fw-semibold">Country</td>
+                      <td>Seas</td>
+                    </tr>
+                    <tr>
+                      <td class="fw-semibold">Zip Code</td>
+                      <td>54321</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ✅ Footer -->
+  <div class="footer d-flex align-items-center justify-content-center bg-white border-top shadow-top">
+    <p class="m-0">&copy; 2025 POS System. All rights reserved.</p>
+  </div>
+
+  <!-- ✅ jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- ✅ Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- ✅ Custom Script -->
+  <script src="script.js"></script>
+</body>
+</html>
