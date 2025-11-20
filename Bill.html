@@ -3,28 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dashboard | POS System</title>
+  <title>Bill | POS System</title>
 
-  <!-- ✅ Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.datatables.net/2.0.8/css/dataTables.bootstrap5.css" rel="stylesheet">
 
-  <!-- ✅ Bootstrap Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
 
-  <!-- ✅ Font Awesome 6 -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
 
-  <!-- ✅ Custom CSS (using the same as profile page) -->
   <link href="styleprofile.css" rel="stylesheet">
 </head>
 <body>
-  <!-- Overlay for mobile sidebar -->
-  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
 
-  <!-- Flyout container (JS will use this) -->
   <div class="sidebar-flyout"></div>
 
-  <!-- ✅ Navbar -->
   <nav class="navbar fixed-top bg-white border-bottom px-3" style="height: 56px; z-index: 1101;">
     <div class="d-flex align-items-center gap-3">
       <span class="sidebar-toggle fs-4 fw-bolder" id="sidebarToggle" style="cursor:pointer;"></span>
@@ -32,8 +26,8 @@
     </div>
 
     <div class="navbar-icons d-flex align-items-center gap-3">
-      <a href="index2.html" class="btn btn-primary btn-sm d-flex align-items-center" role="button">
-        <i class="fa-solid fa-file-invoice-dollar me-1" style="font-size: 0.85em;"></i><span class="d-none d-sm-inline"> New Bill</span>
+      <a href="index2.html" class="btn btn-primary btn-sm d-flex align-items-center new-bill-btn" role="button">
+        <i class="fa-solid fa-file-invoice-dollar me-1"></i><span class="new-bill-text">New Bill</span>
       </a>
       <i class="bi bi-bell-fill" id="notificationIcon" title="Notifications"></i>
       <i class="fa-solid fa-expand" id="fullscreenToggle" title="Fullscreen" style="cursor: pointer;"></i>
@@ -50,9 +44,7 @@
     </div>
   </nav>
 
-  <div class="d-flex" style="height: calc(100vh - 60px);">
-    <!-- ✅ Sidebar Start -->
-    <div class="sidebar d-flex flex-column justify-content-between py-4" id="sidebar" role="navigation">
+ <div class="sidebar d-flex flex-column justify-content-between py-4" id="sidebar" role="navigation">
       <div class="nav-icons d-flex flex-column align-items-center gap-3 mt-5">
         
         <!-- Dashboard (active) -->
@@ -120,24 +112,90 @@
         </div>
       </div>
     </div>
-    <!-- ✅ Sidebar End -->
-
-    <!-- ✅ Main Content -->
-    <div class="main-content flex-grow-1 p-4 d-flex justify-content-center align-items-center" style="min-height: calc(100vh - 56px);">
-      <h1 class="display-4">Welcome to Dashboard</h1>
+    <div class="main-content flex-grow-1 p-2 p-md-4 [...]">
+        <div class="container-fluid">
+            <h3 class="fw-bold mb-4">Bill History</h3>
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table id="billTable" class="table table-striped table-hover table-bordered" style="width:100%">
+                            <thead>
+                                <tr class="text-center">
+                                    <th>Bill ID</th>
+                                    <th>Customer Name</th>
+                                    <th>Date</th>
+                                    <th>Total Amount</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>#001</td>
+                                    <td>Roronoa Zoro</td>
+                                    <td>2025-11-18</td>
+                                    <td>₹1250</td>
+                                    <td><span class="badge bg-success">Paid</span></td>
+                                </tr>
+                                <tr>
+                                    <td>#002</td>
+                                    <td>Nami</td>
+                                    <td>2025-11-18</td>
+                                    <td>₹800</td>
+                                    <td><span class="badge bg-warning text-dark">Pending</span></td>
+                                </tr>
+                                <tr>
+                                    <td>#003</td>
+                                    <td>Sanji</td>
+                                    <td>2025-11-17</td>
+                                    <td>₹2100</td>
+                                    <td><span class="badge bg-success">Paid</span></td>
+                                </tr>
+                                <tr>
+                                    <td>#004</td>
+                                    <td>Usopp</td>
+                                    <td>2025-11-17</td>
+                                    <td>₹550</td>
+                                    <td><span class="badge bg-success">Paid</span></td>
+                                </tr>
+                                <tr>
+                                    <td>#005</td>
+                                    <td>Tony Tony Chopper</td>
+                                    <td>2025-11-16</td>
+                                    <td>₹300</td>
+                                    <td><span class="badge bg-danger">Cancelled</span></td>
+                                </tr>
+                                <tr>
+                                    <td>#006</td>
+                                    <td>Nico Robin</td>
+                                    <td>2025-11-15</td>
+                                    <td>₹1800</td>
+                                    <td><span class="badge bg-success">Paid</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
   </div>
 
-  <!-- ✅ Footer -->
   <div class="footer d-flex align-items-center justify-content-center bg-white border-top shadow-top">
     <p class="m-0">&copy; 2025 POS System. All rights reserved.</p>
   </div>
 
-  <!-- ✅ jQuery -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <!-- ✅ Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <!-- ✅ Custom Script (reusing from profile) -->
+  <script src="https://cdn.datatables.net/2.0.8/js/dataTables.js"></script>
+  <script src="https://cdn.datatables.net/2.0.8/js/dataTables.bootstrap5.js"></script>
   <script src="script.js"></script>
+  <script>
+    new DataTable('#billTable', {
+      layout: {
+        topStart: 'search',
+        topEnd: 'pageLength'
+      }
+    });
+  </script>
 </body>
 </html>
