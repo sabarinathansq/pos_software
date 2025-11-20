@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ice Cream Shop Inventory Logs</title>
+    
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    
+    <link href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+
+    <link href="styleprofile.css" rel="stylesheet">
+    
+    <link href="inventory_styles.css" rel="stylesheet">
+    
+</head>
+<body>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <div class="sidebar-flyout"></div>
+    
+    <nav class="navbar fixed-top bg-white border-bottom px-3" style="height: 56px; z-index: 1101;">
+        <div class="d-flex align-items-center gap-3">
+            <span class="sidebar-toggle fs-4 fw-bolder" id="sidebarToggle" style="cursor:pointer;"></span>
+            <span class="fw-bold">POS</span>
+        </div>
+        <div class="navbar-icons d-flex align-items-center gap-3">
+            <a href="index2.html" class="btn btn-primary btn-sm d-flex align-items-center" role="button">
+                <i class="fa-solid fa-file-invoice-dollar me-1" style="font-size: 0.85em;"></i><span class="d-none d-sm-inline"> New Bill</span>
+            </a>
+            <i class="bi bi-bell-fill" id="notificationIcon" title="Notifications"></i>
+            <i class="fa-solid fa-expand" id="fullscreenToggle" title="Fullscreen" style="cursor: pointer;"></i>
+
+            <div class="dropdown">
+                <a href="#" class="d-flex align-items-center text-dark text-decoration-none dropdown-toggle" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                    <span class="ms-2">Admin</span>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
+                    <li><a class="dropdown-item" href="#">Profile</a></li>
+                    <li><a class="dropdown-item" href="#">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="d-flex" style="height: 100vh;"> 
+        <div class="sidebar d-flex flex-column justify-content-between py-4" id="sidebar" role="navigation">
+            <div class="nav-icons d-flex flex-column align-items-center gap-3 mt-5">
+                
+                <div class="nav-item w-75 mx-auto">
+                    <a href="Dashboard.html" class="d-flex align-items-center justify-content-center text-decoration-none p-2 rounded-3">
+                        <i class="fa-solid fa-house"></i>
+                        <span class="ms-3">Dashboard</span>
+                    </a>
+                   
+                </div>
+                
+                <div class="nav-item w-75 mx-auto">
+                    <a href="Bill.html" class="d-flex align-items-center justify-content-center text-decoration-none p-2 rounded-3">
+                        <i class="fa-solid fa-file-invoice"></i>
+                        <span class="ms-3">Bill</span>
+                    </a>
+                </div>
+                
+                <div class="nav-item w-75 mx-auto">
+                    <a href="Product.html" class="d-flex align-items-center justify-content-center text-decoration-none p-2 rounded-3">
+                        <i class="fa-solid fa-box-open"></i>
+                        <span class="ms-3">Products</span>
+                    </a>
+                </div>
+                
+                <div class="nav-item w-75 mx-auto">
+                    <a href="#" class="d-flex align-items-center justify-content-center text-decoration-none p-2 rounded-3">
+                        <i class="fa-solid fa-chart-column"></i>
+                        <span class="ms-3">Report</span>
+                    </a>
+                </div>
+                <div class="nav-item w-75 mx-auto">
+                    <a href="inventory.html" class="d-flex align-items-center justify-content-center text-decoration-none p-2 rounded-3 active">
+                        <i class="bi bi-box-seam-fill"></i>
+                        <span class="ms-3">Inventory</span>
+                    </a>
+                </div>
+                
+                <div class="nav-item w-75 mx-auto">
+                    <a href="profile.html" class="d-flex align-items-center justify-content-center text-decoration-none p-2 rounded-3">
+                        <i class="fa-solid fa-user"></i>
+                        <span class="ms-3">Profile</span>
+                    </a>
+                </div>
+
+            </div>
+            
+            <div class="bottom-icons d-flex flex-column align-items-center gap-3 mb-3">
+                <div class="nav-item w-75 mx-auto">
+                    <a href="#" class="d-flex align-items-center justify-content-center text-decoration-none p-2 rounded-3">
+                        <i class="fa-solid fa-gear"></i>
+                        <span class="ms-3">Settings</span>
+                    </a>
+                </div>
+                <div class="nav-item w-75 mx-auto">
+                    <a href="#" class="d-flex align-items-center justify-content-center text-decoration-none p-2 rounded-3">
+                        <i class="fa-solid fa-power-off"></i>
+                        <span class="ms-3">Logout</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="main-content flex-grow-1" id="main-content">
+    <div class="container-fluid p-2 p-md-4"><div class="card shadow-sm">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        Ice Cream Inventory Logs
+                        <div class="form-inline">
+                            </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="row mb-3 align-items-center gy-2">
+                            <div class="col-12 col-md-6 col-lg-5">
+                                <div class="input-group input-group-sm">
+                                    
+                                    <input type="search" class="form-control" id="dataTableSearch" placeholder="Search by Product,Time or something.......">
+                                </div>
+                            </div>
+                            <div class="col-md-auto ms-auto"> 
+                                <div class="dropdown">
+                                    <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="entriesDropdown" data-toggle="dropdown" aria-expanded="false">
+                                         <span id="currentEntries">10</span>  
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="entriesDropdown">
+                                        <a class="dropdown-item entry-select" data-value="10" href="#">10 entries</a>
+                                        <a class="dropdown-item entry-select" data-value="25" href="#">25 entries</a>
+                                        <a class="dropdown-item entry-select" data-value="50" href="#">50 entries</a>
+                                        <a class="dropdown-item entry-select" data-value="100" href="#">100 entries</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-auto"> 
+                                <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" id="actionsDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Actions
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="actionsDropdown">
+                                    <a class="dropdown-item" href="#">Export to CSV</a>
+                                    <a class="dropdown-item" href="#">Generate Report</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="table-responsive">
+                            <table id="inventoryTable" class="table table-striped table-bordered" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>S.No</th>
+                                        <th>Product</th>
+                                        <th>Quantity (Liters/Units)</th>
+                                        <th>Status</th> 
+                                        <th>Time</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+    <div class="footer d-flex align-items-center justify-content-center bg-white border-top shadow-top">
+        <p class="m-0">&copy; 2025 POS System. All rights reserved.</p>
+    </div>
+        
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+        $(document).ready(function() {
+            var data = [];
+            var totalRows = 100; 
+            
+            // List of ice cream-related products
+            var iceCreamProducts = [
+                'Vanilla Base (5L)', 'Chocolate Chip (5L)', 'Strawberry Puree (5L)',
+                'Cookie Dough Bits', 'Waffle Cones (Box)', 'Fudge Syrup (Gallon)',
+                'Sprinkles (Jar)', 'Mint Chocolate (5L)', 'Pistachio Base (5L)', 
+                'Whipped Cream Cans', 'Napkins (Pack)', 'Spoons (Box)'
+            ];
+            
+            var inStatusProbability = 0.60; 
+
+            // Date formatting helper
+            const pad = (num) => num.toString().padStart(2, '0');
+
+            // Generate Dummy Data
+            for (let i = 1; i <= totalRows; i++) {
+                
+                var randomStatus = (Math.random() < inStatusProbability) ? 'IN' : 'OUT';
+                var randomProduct = iceCreamProducts[Math.floor(Math.random() * iceCreamProducts.length)];
+                
+                var quantity = (randomStatus === 'IN') 
+                                    ? (Math.floor(Math.random() * 20) + 5) 
+                                    : (Math.floor(Math.random() * 10) + 1); 
+                
+                var displayQuantity = quantity; 
+                
+                let date = new Date();
+                date.setDate(date.getDate() - Math.floor(Math.random() * 2)); 
+                date.setHours(Math.floor(Math.random() * 24));
+                date.setMinutes(Math.floor(Math.random() * 60));
+
+                let formattedDate = `${pad(date.getMonth() + 1)}-${pad(date.getDate())}-${date.getFullYear()}`;
+                let formattedTime = `${pad(date.getHours() % 12 || 12)}:${pad(date.getMinutes())} ${date.getHours() >= 12 ? 'PM' : 'AM'}`;
+
+
+                data.push({
+                    "sno": i,
+                    "product": randomProduct,
+                    "quantity": displayQuantity,
+                    "status": randomStatus,
+                    "time": `${formattedDate} ${formattedTime}`
+                });
+            }
+
+            // Initialize DataTables
+            var table = $('#inventoryTable').DataTable({
+                data: data,
+                columns: [
+                    { data: 'sno', width: "5%" },
+                    { data: 'product' },
+                    { data: 'quantity' },
+                    { 
+                        data: 'status',
+                        render: function (data, type, row) {
+                            if (type === 'display') {
+                                return data === 'IN' ? 
+                                    '<span class="badge badge-pill badge-success">IN</span>' :
+                                    '<span class="badge badge-pill badge-danger">OUT</span>';
+                            }
+                            return data;
+                        }
+                    },
+                    { data: 'time' }
+                ],
+                "pagingType": "simple_numbers",
+                "lengthChange": false, 
+                "pageLength": 10,
+                "dom": '<"top">rt<"bottom"ip><"clear">', 
+                "language": {
+                    "info": "Showing _START_ to _END_ of _TOTAL_ entries",
+                    "infoEmpty": "Showing 0 to 0 of 0 entries",
+                    "infoFiltered": "(filtered from _MAX_ total entries)",
+                    "paginate": {
+                        "next": "&raquo;",
+                        "previous": "&laquo;"
+                    }
+                },
+                // Apply Row Coloring based on the 'status' data value
+                "createdRow": function (row, data, dataIndex) {
+                    if (data.status === 'IN') {
+                        $(row).addClass('status-in');
+                    } else if (data.status === 'OUT') {
+                        $(row).addClass('status-out');
+                    }
+                }
+            });
+
+            // Handle custom search input
+            $('#dataTableSearch').on('keyup', function() {
+                table.search(this.value).draw();
+            });
+
+            // Handle custom entries per page select
+            $('.entry-select').on('click', function(e) {
+                e.preventDefault();
+                var entries = $(this).data('value'); 
+                table.page.len(entries).draw(); 
+                $('#currentEntries').text(entries);
+            });
+        });
+    </script>
+</body>
+</html>

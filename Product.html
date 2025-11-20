@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Products | POS System</title>
+
+  <!-- ✅ Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- ✅ DataTables CSS -->
+  <link href="https://cdn.datatables.net/2.0.8/css/dataTables.bootstrap5.css" rel="stylesheet">
+
+  <!-- ✅ Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+
+  <!-- ✅ Font Awesome 6 -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+
+  <!-- ✅ Custom CSS -->
+  <link href="styleprofile.css" rel="stylesheet">
+</head>
+<body>
+  <!-- Overlay for mobile sidebar -->
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- Flyout container (JS will use this) -->
+  <div class="sidebar-flyout"></div>
+
+  <!-- ✅ Navbar -->
+  <nav class="navbar fixed-top bg-white border-bottom px-3" style="height: 56px; z-index: 1101;">
+    <div class="d-flex align-items-center gap-3">
+      <span class="sidebar-toggle fs-4 fw-bolder" id="sidebarToggle" style="cursor:pointer;"></span>
+      <span class="fw-bold">POS</span>
+    </div>
+
+    <div class="navbar-icons d-flex align-items-center gap-3">
+      <a href="index2.html" class="btn btn-primary btn-sm d-flex align-items-center new-bill-btn" role="button">
+        <i class="fa-solid fa-file-invoice-dollar me-1"></i><span class="new-bill-text">New Bill</span>
+      </a>
+      <i class="bi bi-bell-fill" id="notificationIcon" title="Notifications"></i>
+      <i class="fa-solid fa-expand" id="fullscreenToggle" title="Fullscreen" style="cursor: pointer;"></i>
+
+      <div class="dropdown">
+        <a href="#" class="d-flex align-items-center text-dark text-decoration-none dropdown-toggle" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+          <span class="ms-2">Admin</span>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
+          <li><a class="dropdown-item" href="profile.html">Profile</a></li>
+          <li><a class="dropdown-item" href="#">Logout</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="d-flex" style="height: 100vh;">
+    <div class="sidebar d-flex flex-column justify-content-between py-4" id="sidebar" role="navigation">
+            <div class="nav-icons d-flex flex-column align-items-center gap-3 mt-5">
+                
+                <div class="nav-item w-75 mx-auto">
+                    <a href="Dashboard.html" class="d-flex align-items-center justify-content-center text-decoration-none p-2 rounded-3">
+                        <i class="fa-solid fa-house"></i>
+                        <span class="ms-3">Dashboard</span>
+                    </a>
+                   
+                </div>
+                
+                <div class="nav-item w-75 mx-auto">
+                    <a href="Bill.html" class="d-flex align-items-center justify-content-center text-decoration-none p-2 rounded-3">
+                        <i class="fa-solid fa-file-invoice"></i>
+                        <span class="ms-3">Bill</span>
+                    </a>
+                </div>
+                
+                <div class="nav-item w-75 mx-auto">
+                    <a href="Product.html" class="d-flex align-items-center justify-content-center text-decoration-none p-2 rounded-3">
+                        <i class="fa-solid fa-box-open"></i>
+                        <span class="ms-3">Products</span>
+                    </a>
+                </div>
+                
+                <div class="nav-item w-75 mx-auto">
+                    <a href="#" class="d-flex align-items-center justify-content-center text-decoration-none p-2 rounded-3">
+                        <i class="fa-solid fa-chart-column"></i>
+                        <span class="ms-3">Report</span>
+                    </a>
+                </div>
+                <div class="nav-item w-75 mx-auto">
+                    <a href="inventory.html" class="d-flex align-items-center justify-content-center text-decoration-none p-2 rounded-3 active">
+                        <i class="bi bi-box-seam-fill"></i>
+                        <span class="ms-3">Inventory</span>
+                    </a>
+                </div>
+                
+                <div class="nav-item w-75 mx-auto">
+                    <a href="profile.html" class="d-flex align-items-center justify-content-center text-decoration-none p-2 rounded-3">
+                        <i class="fa-solid fa-user"></i>
+                        <span class="ms-3">Profile</span>
+                    </a>
+                </div>
+
+            </div>
+            
+            <div class="bottom-icons d-flex flex-column align-items-center gap-3 mb-3">
+                <div class="nav-item w-75 mx-auto">
+                    <a href="#" class="d-flex align-items-center justify-content-center text-decoration-none p-2 rounded-3">
+                        <i class="fa-solid fa-gear"></i>
+                        <span class="ms-3">Settings</span>
+                    </a>
+                </div>
+                <div class="nav-item w-75 mx-auto">
+                    <a href="#" class="d-flex align-items-center justify-content-center text-decoration-none p-2 rounded-3">
+                        <i class="fa-solid fa-power-off"></i>
+                        <span class="ms-3">Logout</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    <!-- ✅ Main Content -->
+    <div class="main-content flex-grow-1 p-2 p-md-4 [...]">
+        <div class="container-fluid">
+            <h3 class="fw-bold mb-4">Product List</h3>
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <div class="table-responsive"></div>
+                    <table id="productTable" class="table table-striped table-hover table-bordered" style="width:100%">
+                        <thead>
+                            <tr class="text-center">
+                                <th>Product ID</th>
+                                <th>Product Name</th>
+                                <th>Category</th>
+                                <th>Price</th>
+                                <th>Stock</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>#P001</td>
+                                <td>Vanilla Cone</td>
+                                <td>Cones</td>
+                                <td>₹120</td>
+                                <td><span class="badge bg-success">In Stock</span></td>
+                            </tr>
+                            <tr>
+                                <td>#P002</td>
+                                <td>Chocolate Cup</td>
+                                <td>Cups</td>
+                                <td>₹150</td>
+                                <td><span class="badge bg-danger">Out of Stock</span></td>
+                            </tr>
+                            <tr>
+                                <td>#P003</td>
+                                <td>Butterscotch Brick</td>
+                                <td>Bricks</td>
+                                <td>₹250</td>
+                                <td><span class="badge bg-success">In Stock</span></td>
+                            </tr>
+                            <tr>
+                                <td>#P004</td>
+                                <td>Strawberry Stick</td>
+                                <td>Sticks</td>
+                                <td>₹80</td>
+                                <td><span class="badge bg-success">In Stock</span></td>
+                            </tr>
+                            <tr>
+                                <td>#P005</td>
+                                <td>Black Currant Cup</td>
+                                <td>Cups</td>
+                                <td>₹180</td>
+                                <td><span class="badge bg-danger">Out of Stock</span></td>
+                            </tr>
+                            <tr>
+                                <td>#P006</td>
+                                <td>Pista Kulfi</td>
+                                <td>Kulfi</td>
+                                <td>₹90</td>
+                                <td><span class="badge bg-success">In Stock</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+
+  <!-- ✅ Footer -->
+  <div class="footer d-flex align-items-center justify-content-center bg-white border-top shadow-top">
+    <p class="m-0">&copy; 2025 POS System. All rights reserved.</p>
+  </div>
+
+  <!-- ✅ jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- ✅ Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- ✅ DataTables JS -->
+  <script src="https://cdn.datatables.net/2.0.8/js/dataTables.js"></script>
+  <script src="https://cdn.datatables.net/2.0.8/js/dataTables.bootstrap5.js"></script>
+  <!-- ✅ Custom Script -->
+  <script src="script.js"></script>
+  <script>
+    new DataTable('#productTable', {
+      layout: {
+        topStart: 'search',
+        topEnd: 'pageLength'
+      }
+    });
+  </script>
+</body>
+</html>

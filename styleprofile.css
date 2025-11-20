@@ -130,6 +130,7 @@ body {
 .nav-item > a {
   color: #fff;
   font-size: 1.4rem;
+  display: flex;
   transition: all var(--transition-speed);
 }
 
@@ -157,6 +158,7 @@ body {
 
 /* ================= TEXT HIDDEN WHEN COLLAPSED ================= */
 .nav-item > a span {
+  display: none;
   white-space: nowrap;
   color: #fff;
   font-size: 1rem;
@@ -218,6 +220,30 @@ body {
   border-bottom: 1px solid #455a64;
 }
 
+/* ================= RESPONSIVE ================= */
+@media (max-width: 992px) {
+  .sidebar {
+    width: 60px;
+  }
+
+  .sidebar.expanded {
+    width: 240px;
+    box-shadow: 0 0 10px rgba(240, 240, 240, 0.4);
+  }
+
+  .main-content {
+    margin-left: 60px;
+  }
+
+  .sidebar.expanded~.main-content {
+    margin-left: 60px; /* Keep content margin same when sidebar overlays */
+  }
+
+  .footer {
+    left: 60px;
+  }
+}
+
 /* ================= MOBILE RESPONSIVE (SMALLER SCREENS) ================= */
 @media (max-width: 768px) {
   .sidebar {
@@ -233,6 +259,11 @@ body {
   .main-content,
   .sidebar.expanded~.main-content,
   .footer,
+  .sidebar.expanded~.footer {
+    margin-left: 0; /* Use full width */
+    left: 0;
+  }
+}
 
 .sidebar-overlay {
   position: fixed;
@@ -243,4 +274,15 @@ body {
   background-color: rgba(199, 192, 216, 0.296);
   z-index: 1099; /* Below sidebar, above content */
   display: none; /* Hidden by default */
+}
+
+.sidebar-overlay.active {
+  display: block; /* Show when sidebar is active */
+}
+
+/* Keep the overlay behavior restricted to small screens */
+@media (min-width: 769px) {
+  .sidebar-overlay.active {
+    display: none !important;
+  }
 }

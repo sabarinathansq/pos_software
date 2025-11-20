@@ -1,0 +1,139 @@
+body {
+    background-color: #f8f9fa;
+}
+
+/* 1. LAYOUT FIX: Ensures content clears the fixed navbar (56px) and pushes everything inside the main content wrapper. */
+.main-content-wrapper {
+    padding-top: 56px; 
+    margin-left: 60px; /* Initial margin to clear the collapsed sidebar width (assumed 60px) */
+    min-height: calc(100vh - 56px); 
+    width: 100%;
+    /* Add some padding to the right and bottom to prevent cutoff on smaller screens */
+    padding-right: 1rem; 
+    padding-bottom: 50px; /* Space for the fixed footer/bottom elements */
+}
+
+/* FIX: Ensures the inner container fluid doesn't add conflicting margins */
+.container-fluid {
+    margin-top: 0; /* Remove redundant margin */
+    padding-left: 0.5rem; /* Small left padding adjustment */
+    padding-right: 0.5rem;
+}
+
+/* 2. HEADING CUTTING FIX: Add left padding to the card body to prevent the title from hitting the edge */
+.card-header {
+    background-color: #ffffff;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+    font-size: 1.25rem;
+    font-weight: 500;
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+    padding-left: 1.5rem; /* Ensure padding on the left */
+}
+
+/* Your existing card and table styles */
+.card {
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    border-radius: 0.5rem;
+}
+
+/* Custom DataTables styling */
+.dataTables_wrapper .row:first-child { margin-bottom: 15px; }
+.dataTables_wrapper .row:last-child { margin-top: 15px; }
+
+/* 3. ROW COLOR FIX: DataTables bootstrap theme often uses a strong background setting that overrides simple classes. 
+    We need to ensure the custom color is stronger using the selector or !important (used here as a quick fix)
+    Also, ensure the color covers all cells (td) within the row. */
+
+/* 🎨 Custom Colors for Rows based on Status - DO NOT CHANGE COLORS */
+.status-in td {
+    /* Light Green for Received/Added */
+    background-color: #d4edda !important; 
+    color: #155724;
+}
+.status-out td {
+    /* Light Red for Sold/Removed */
+    background-color: #f8d7da !important; 
+    color: #721c24;
+}
+/* Ensure table stripes/hover don't override the status color on individual cells (td) */
+#inventoryTable tbody tr:nth-child(odd).status-in td {
+    background-color: #c3e6cb !important;
+}
+#inventoryTable tbody tr:nth-child(odd).status-out td {
+    background-color: #f5c6cb !important;
+}
+
+/* DataTables Pagination Styling */
+.dataTables_wrapper .dataTables_paginate .paginate_button.current,
+.dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: #fff !important;
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+    color: #007bff;
+    border: 1px solid #dee2e6;
+    background-color: #fff;
+    margin-left: -1px;
+    text-decoration: none;
+}
+/* Target the button with id 'entriesDropdown' for specificity */
+#entriesDropdown:hover,
+#entriesDropdown:focus,
+#entriesDropdown:active,
+.show > #entriesDropdown {
+    /* Keep the background white */
+    background-color: white !important;
+    /* Keep the border gray */
+    border-color: #6c757d !important; /* Bootstrap's default secondary color */
+    /* Keep the text color gray */
+    color: #6c757d !important;
+    /* Remove the box shadow that often appears on focus/active state */
+    box-shadow: none !important;
+}
+
+/* Ensure the button looks correct when the dropdown is open */
+.dropdown-toggle.show {
+    background-color: white !important;
+    border-color: #6c757d !important;
+    color: #6c757d !important;
+}
+#inventoryTable thead th {
+    font-weight: normal; /* Makes the text not too bold */
+    color: #000000;      /* Sets the text color to a medium grey */
+    /* Optional: To make the background greyish too: */
+    /* background-color: #f0f0f0; */
+}
+
+/* Responsive adjustments for the inventory table controls */
+@media (max-width: 768px) {
+    .card-header .form-inline {
+        width: 100%;
+        margin-top: 0.5rem;
+        justify-content: flex-start;
+    }
+
+    .card-body .row.mb-3 {
+        flex-direction: column;
+    }
+    .card-body .row.mb-3 > div {
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+}
+
+/* Fix for pagination on small screens */
+@media (max-width: 576px) {
+    .dataTables_wrapper .bottom {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    .dataTables_wrapper .dataTables_paginate .paginate_button {
+        margin-bottom: 2rem;
+        justify-content: center;
+    }
+}
+}

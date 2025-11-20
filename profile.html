@@ -57,19 +57,16 @@
         <div class="nav-item w-75 mx-auto">
           <a href="dashboard.html" class="d-flex align-items-center justify-content-center text-decoration-none p-2 rounded-3">
             <i class="fa-solid fa-house"></i>
-            <span class="d-none ms-3">Dashboard</span>
+            <span class="ms-3">Dashboard</span>
           </a>
-          <ul class="sidebar-submenu p-1 m-0" style="width: 180px;">
-            <li><a href="#" class="d-block p-1 rounded text-decoration-none">Overview</a></li>
-            <li><a href="#" class="d-block p-1 rounded text-decoration-none">Analytics</a></li>
-          </ul>
+          
         </div>
         
         <!-- Bill (no submenu) -->
         <div class="nav-item w-75 mx-auto">
-          <a href="#" class="d-flex align-items-center justify-content-center text-decoration-none p-2 rounded-3">
+          <a href="index2.html" class="d-flex align-items-center justify-content-center text-decoration-none p-2 rounded-3">
             <i class="fa-solid fa-file-invoice"></i>
-            <span class="d-none ms-3">Bill</span>
+            <span class="ms-3">Bill</span>
           </a>
         </div>
         
@@ -77,7 +74,7 @@
         <div class="nav-item w-75 mx-auto">
           <a href="#" class="d-flex align-items-center justify-content-center text-decoration-none p-2 rounded-3">
             <i class="fa-solid fa-box-open"></i>
-            <span class="d-none ms-3">Products</span>
+            <span class="ms-3">Products</span>
           </a>
         </div>
         
@@ -85,15 +82,22 @@
         <div class="nav-item w-75 mx-auto">
           <a href="#" class="d-flex align-items-center justify-content-center text-decoration-none p-2 rounded-3">
             <i class="fa-solid fa-chart-column"></i>
-            <span class="d-none ms-3">Report</span>
+            <span class="ms-3">Report</span>
+          </a>
+        </div>
+        <!-- inventory (no submenu) -->
+        <div class="nav-item w-75 mx-auto">
+          <a href="inventory.html" class="active d-flex align-items-center justify-content-center text-decoration-none p-2 rounded-3">
+            <i class="bi bi-box-seam-fill"></i>
+            <span class="ms-3">Inventory</span>
           </a>
         </div>
         
         <!-- Profile (no submenu, but active) -->
         <div class="nav-item w-75 mx-auto">
-          <a href="profile.html" class="active d-flex align-items-center justify-content-center text-decoration-none p-2 rounded-3">
+          <a href="profile (1).html" class="active d-flex align-items-center justify-content-center text-decoration-none p-2 rounded-3">
             <i class="fa-solid fa-user"></i>
-            <span class="d-none ms-3">Profile</span>
+            <span class="ms-3">Profile</span>
           </a>
         </div>
 
@@ -103,13 +107,13 @@
         <div class="nav-item w-75 mx-auto">
           <a href="#" class="d-flex align-items-center justify-content-center text-decoration-none p-2 rounded-3">
             <i class="fa-solid fa-gear"></i>
-            <span class="d-none ms-3">Settings</span>
+            <span class="ms-3">Settings</span>
           </a>
         </div>
         <div class="nav-item w-75 mx-auto">
           <a href="#" class="d-flex align-items-center justify-content-center text-decoration-none p-2 rounded-3">
             <i class="fa-solid fa-power-off"></i>
-            <span class="d-none ms-3">Logout</span>
+            <span class="ms-3">Logout</span>
           </a>
         </div>
       </div>
@@ -117,7 +121,7 @@
     <!-- ✅ Sidebar End -->
 
     <!-- ✅ Main Content -->
-    <div class="main-content flex-grow-1 p-4" style="min-height: calc(100vh - 56px);">
+    <div class="main-content flex-grow-1 p-2 p-md-4 [...]">
       <div class="container">
         <!-- Profile Information Card -->
         <div class="card shadow-sm mb-4">
@@ -147,9 +151,7 @@
         <!-- Billing and Shipping Address Row -->
         <div class="row mt-4">
           <!-- Billing Address Card -->
-          <div class="col-md-6 mb-4">
-            <div class="card shadow-sm">
-              <div class="card-header fw-bold">
+          <div class="col-card-header fw-bold">
                 Billing Address
               </div>
               <div class="card-body p-0">
@@ -182,10 +184,8 @@
           </div>
 
           <!-- Shipping Address Card -->
-          <div class="col-md-6 mb-4">
-            <div class="card shadow-sm">
-              <div class="card-header fw-bold">
-                Shipping Address
+          <div class="col-lg-6 mb-4">sm">
+              <div class="card-header f
               </div>
               <div class="card-body p-0">
                 <!-- This table is identical for demonstration. You can change the values. -->
